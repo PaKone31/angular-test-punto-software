@@ -1,0 +1,22 @@
+.item-list-content {
+  display: flex;
+  margin: 32px auto;
+  padding: 0 16px;
+  max-width: 960px;
+  flex-direction: column;
+}
+
+.item-list-data {
+  padding-top: 20px;
+}
+
+.custom-card {
+  height: auto;
+  display: block;
+  width: 100%;
+}
+
+.nothig-to-do-here {
+  padding-top: 50px;
+  text-align: center;
+}

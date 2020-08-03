@@ -1,0 +1,22 @@
+<div class="login-content">
+  <h2>Login</h2>
+  <p>Ingrese <strong>username</strong> y <strong>password</strong>:</p>
+
+  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)" class="login-data">
+    <div>
+      <label for="username">
+        Username
+      </label>
+      <input id="username" type="text" formControlName="username" required autocomplete="off">
+    </div>
+
+    <div>
+      <label for="password">
+        Password
+      </label>
+      <input id="password" type="password" formControlName="password" required autocomplete="off">
+    </div>
+
+    <button class="button" type="submit">Login</button>
+  </form>
+</div>

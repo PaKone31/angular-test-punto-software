@@ -1,0 +1,44 @@
+<div class="item-list-content">
+  <h2>Listado de zonas y mesas</h2>
+
+  <div class="card-container">
+    <div class="card card-small" [routerLink]="['/item-zone', 'new']">
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" /></svg>
+      <span>Agregar zona</span>
+    </div>
+
+    <div class="card card-small" [routerLink]="['/item-table', 'new']" *ngIf="zones.length">
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" /></svg>
+      <span>Agregar mesa</span>
+    </div>
+  </div>
+
+  <div *ngFor="let zone of zones" class="card-container custom-card">
+    <h2>Zona: {{zone.name}}</h2>
+
+    <div class="button-group">
+      <button type="button" name="button" [routerLink]="['/item-zone', zone.id]">Editar</button>
+      <div class="spacer"></div>
+      <button type="button" name="button" (click)="deleteItem(zone.id, 'zones')" [disabled]="zone.tables.length">Eliminar</button>
+    </div>
+
+    <div *ngFor="let table of zone.tables" class="card custom-card" [ngStyle]="table.isActive ? {'background-color': 'lightgreen'} : {'background-color': 'lightgray'}">
+      <h3>Mesa: {{table.name}}</h3>
+      <p>Estatus: {{table.isActive ? 'Activa' : 'Inactiva'}}</p>
+
+      <div class="button-group">
+        <button type="button" name="button" (click)="changeStatus(table)">{{table.isActive ? 'Desactivar' : 'Activar'}}</button>
+        <div class="spacer"></div>
+        <button type="button" name="button" [routerLink]="['/item-table', table.id]">Editar</button>
+        <div class="spacer"></div>
+        <button type="button" name="button" (click)="deleteItem(table.id, 'tables')">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="nothig-to-do-here" *ngIf="!zones.length">
+    No hay zonas registradas
+  </h3>
+</div>
